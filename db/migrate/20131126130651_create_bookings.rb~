@@ -1,0 +1,22 @@
+class CreateBookings < ActiveRecord::Migration
+  def up
+    create_table :bookings do |t|
+      t.integer :resource_id
+      t.datetime :start
+      t.datetime :finish
+      t.string :user
+      t.string :status
+      t.timestamps
+    end
+    Booking.create(resource: 1, start:"2013-10-26T10:00:00Z", finish: "2013-10-26T11:00:00Z", status: "approved", user: "someuser@gmail.com")
+    Booking.create(resource: 1, start:"2013-10-27T10:00:00Z", finish: "2013-10-26T11:00:00Z", status: "approved", user: "someuser@gmail.com")
+    Booking.create(resource: 1, start:"2013-10-28T10:00:00Z", finish: "2013-10-26T11:00:00Z", status: "approved", user: "someuser@gmail.com")
+  end
+    
+
+
+
+  def down
+    drop_table :bookings
+  end
+end
